@@ -8,7 +8,7 @@ type Props = {
 
 const Layout = ({ children, className }: Props) => {
   return (
-    <main className={cn("h-[95vh] px-4 py-2 bg-zinc-100", className)}>
+    <main className={cn("h-[90vh] px-4 py-2 bg-zinc-100", className)}>
       {children}
     </main>
   );
