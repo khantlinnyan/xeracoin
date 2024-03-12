@@ -39,18 +39,20 @@ const BtnGroup = () => {
           toast.success("Updated coins");
         }
       } else {
-        const existingOrderIds: string[] = JSON.parse(
-          localStorage.getItem("orderIds") || "[]"
-        );
-        if (
-          existingOrderIds.length > 0 &&
-          existingOrderIds[existingOrderIds.length - 1] === coinData.orderId
-        ) {
-          return;
+        if (typeof window !== "undefined" && window.localStorage) {
+          const existingOrderIds: string[] = JSON.parse(
+            localStorage.getItem("orderIds") || "[]"
+          );
+          if (
+            existingOrderIds.length > 0 &&
+            existingOrderIds[existingOrderIds.length - 1] === coinData.orderId
+          ) {
+            return;
+          }
+          existingOrderIds.push(coinData.orderId);
+          localStorage.setItem("orderIds", JSON.stringify(existingOrderIds));
+          toast.success("Updated coins");
         }
-        existingOrderIds.push(coinData.orderId);
-        localStorage.setItem("orderIds", JSON.stringify(existingOrderIds));
-        toast.success("Updated coins");
       }
     } catch (error) {
       toast.error("Somethings went wrong");

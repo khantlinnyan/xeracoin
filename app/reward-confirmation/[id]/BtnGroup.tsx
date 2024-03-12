@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { useTotalCoins } from "@/context/TotalCoinContext";
 import { createClient } from "@/lib/supabase/client";
-import { setConfig } from "next/config";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";
