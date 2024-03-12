@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { signUpWithEmailAndPassword } from "@/app/auth-server-action/actions";
 import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 const FormSchema = z
   .object({
@@ -44,6 +45,7 @@ export default function RegisterForm() {
     const { error } = JSON.parse(result);
     if (result) {
       toast.success("Register successful");
+      redirect("/");
     } else {
       toast.error("Somethings went wrong");
     }

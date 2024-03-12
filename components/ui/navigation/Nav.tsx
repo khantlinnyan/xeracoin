@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 type Props = {};
 
 const className = "flex justify-center ";
-const iconSize = "lg:text-3xl text-2xl";
+const iconSize = "text-3xl";
 const Nav = (props: Props) => {
   const pathname = usePathname();
   return (

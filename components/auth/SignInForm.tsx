@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { signInWithEmailAndPassword } from "@/app/auth-server-action/actions";
+import { redirect } from "next/navigation";
 
 const FormSchema = z.object({
   email: z.string().email(),
@@ -35,6 +36,7 @@ export default function SignInForm() {
     const result = await signInWithEmailAndPassword(data);
     if (result) {
       toast.success("Sign in successful");
+      redirect("/");
     }
   }
 
