@@ -2,7 +2,6 @@
 import React, { createContext, useContext, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useTotalCoins } from "./TotalCoinContext";
-import { toast } from "sonner";
 
 interface CoinContextType {
   totalCoins: number;
@@ -23,7 +22,6 @@ export const CoinContextProvider = ({
 
   const fetchData = async () => {
     const dataSession = await supabase.auth.getSession();
-    const user = await supabase.auth.getUser();
 
     if (!dataSession) {
       return;
@@ -31,9 +29,6 @@ export const CoinContextProvider = ({
       const { error } = await supabase
         .from("user")
         .insert([{ coins: totalCoins, amount: totalAmount }]);
-      if (error) {
-        toast.error("Somethings went wrong");
-      }
       if (typeof localStorage !== "undefined") {
         localStorage.removeItem("orderIds");
       }

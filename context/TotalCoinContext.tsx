@@ -63,9 +63,7 @@ export const TotalCoinsProvider = ({ children }: any) => {
 
           setTotalCoins(totalCoinsAmount);
           setTotalAmount(totalAmountValue);
-        } catch (error) {
-          toast.error("Something went wrong");
-        }
+        } catch (error) {}
       } else {
         const { data: coinAndAmount } = await supabase
           .from("user")
