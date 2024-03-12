@@ -4,6 +4,11 @@ import HandSign from "@/public/img/HandLove.png";
 import Layout from "@/components/Layout";
 import Heading from "@/components/Typography/Heading";
 import BtnGroup from "./BtnGroup";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "xera | confirmation",
+};
 
 const Header = () => {
   return (

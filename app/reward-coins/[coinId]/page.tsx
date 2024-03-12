@@ -4,8 +4,12 @@ import HandSign from "@/public/img/HandLove.png";
 import Layout from "@/components/Layout";
 import Heading from "@/components/Typography/Heading";
 import BtnGroup from "./BtnGroup";
+import { Metadata } from "next";
 
 type Props = {};
+export const metadata: Metadata = {
+  title: "xera | reward",
+};
 
 const Header = () => {
   return (
