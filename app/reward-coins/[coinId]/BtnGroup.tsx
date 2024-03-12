@@ -63,7 +63,7 @@ const BtnGroup = () => {
   return (
     <div className="flex items-end mb-2">
       <Button
-        className="text-white font-semibold py-5 w-full max-w-xl bg-primary mx-auto lg:py-6 lg:mb-4"
+        className="text-white font-semibold  w-full max-w-xl bg-primary mx-auto py-6 lg:mb-4"
         onClick={handleCollect}
       >
         Collect Now
