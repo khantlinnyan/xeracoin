@@ -13,7 +13,7 @@ interface PreviewCoinProps {
 
 export const PreviewCoin: React.FC<PreviewCoinProps> = ({ className }) => {
   const supabase = createClient();
-  const { totalCoins, totalAmount } = useTotalCoins();
+  const { totalCoins, totalAmount }: any = useTotalCoins();
 
   return (
     <div

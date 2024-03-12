@@ -9,7 +9,7 @@ const BtnGroup = () => {
   const router = useRouter();
   const params = useParams();
   const supabase = createClient();
-  const { setTotalCoins, setTotalAmount } = useTotalCoins();
+  const { setTotalCoins, setTotalAmount }: any = useTotalCoins();
 
   const handleCollect = async () => {
     const session = await supabase.auth.getSession();
@@ -39,8 +39,9 @@ const BtnGroup = () => {
           toast.success("Updated coins");
         }
       } else {
-        const existingOrderIds: string[] =
-          JSON.parse(localStorage.getItem("orderIds")) || [];
+        const existingOrderIds: string[] = JSON.parse(
+          localStorage.getItem("orderIds") || "[]"
+        );
         if (
           existingOrderIds.length > 0 &&
           existingOrderIds[existingOrderIds.length - 1] === coinData.orderId

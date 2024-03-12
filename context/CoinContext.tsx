@@ -1,13 +1,22 @@
 "use client";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useTotalCoins } from "./TotalCoinContext";
 
-const CoinContext = createContext();
+interface CoinContextType {
+  totalCoins: number;
+  totalAmount: number;
+}
+
+const CoinContext = createContext<CoinContextType | undefined>(undefined);
 
 export const useCoinContext = () => useContext(CoinContext);
 
-export const CoinContextProvider = ({ children }) => {
+export const CoinContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const supabase = createClient();
   const { totalCoins, totalAmount } = useTotalCoins();
 
@@ -17,22 +26,20 @@ export const CoinContextProvider = ({ children }) => {
     if (!dataSession) {
       return;
     } else {
-      const { data, error } = await supabase
+      await supabase
         .from("user")
-        .select()
-        .eq("userId", user.data.user?.id)
-        .single();
-      if (error) {
-        const { data, error } = await supabase
-          .from("user")
-          .insert([{ coins: totalCoins, amount: totalAmount }]);
-      }
+        .insert([{ coins: totalCoins, amount: totalAmount }]);
       localStorage.removeItem("orderIds");
     }
   };
+
   useEffect(() => {
     fetchData();
-  }, [totalCoins]);
+  }, [totalCoins, totalAmount]);
 
-  return <CoinContext.Provider value={{}}>{children}</CoinContext.Provider>;
+  return (
+    <CoinContext.Provider value={{ totalCoins, totalAmount }}>
+      {children}
+    </CoinContext.Provider>
+  );
 };

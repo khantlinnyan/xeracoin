@@ -10,7 +10,7 @@ const page = async (props: Props) => {
   return (
     <section className="bg-zinc-100">
       <ProfilePreview userName={data.session ? "Lynn" : "Unknown"} />
-      <ProfileInfo email={"dd"} />
+      <ProfileInfo />
     </section>
   );
 };

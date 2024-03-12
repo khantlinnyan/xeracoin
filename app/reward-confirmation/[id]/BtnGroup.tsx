@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 import { toast } from "sonner";
 
 const BtnGroup = () => {
-  const { totalCoins, totalAmount, setTotalAmount, setTotalCoins } =
+  const { totalCoins, totalAmount, setTotalAmount, setTotalCoins }: any =
     useTotalCoins();
   const params = useParams();
   const router = useRouter();

@@ -40,17 +40,17 @@ const ProfileInfo = async () => {
         </Link>
       )}
       <div className="bg-white gap-y-4 flex flex-col mx-4 px-3 py-3 rounded-xl md:p-5">
-        <IconInfoText Text={data.user?.email} Icon={MynauiEnvelope} />
+        <IconInfoText Text={data?.user?.email ?? ""} Icon={MynauiEnvelope} />
         <IconInfoText
-          Text={data.user?.phone ? "09912389567" : "Unknown"}
+          Text={data?.user?.phone ? "09912389567" : "Unknown"}
           Icon={MynauiTelephone}
         />
         <IconInfoText
-          Text={data.user ? "Yangon, Kyauktatar" : "Unknown"}
+          Text={data?.user ? "Yangon, Kyauktatar" : "Unknown"}
           Icon={MynauiLocation}
         />
       </div>
-      {data.user && (
+      {data?.user && (
         <SignOut>
           <div className="bg-white mt-5 gap-y-4 flex flex-col mx-4 px-4 py-2 rounded-xl md:p-5">
             <IconInfoText

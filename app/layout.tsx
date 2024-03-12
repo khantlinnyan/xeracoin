@@ -26,8 +26,10 @@ export default function RootLayout({
       <body className={`${poppins.className} bg-zinc-100 `}>
         <TotalCoinsProvider>
           <CoinContextProvider>
-            <Toaster position="top-center" richColors />
-            <main>{children}</main>
+            <main>
+              <Toaster position="top-center" richColors />
+              {children}
+            </main>
             <Nav />
           </CoinContextProvider>
         </TotalCoinsProvider>

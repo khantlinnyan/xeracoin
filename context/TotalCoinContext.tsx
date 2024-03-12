@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+
 interface TotalCoinsContextType {
   totalCoins: number;
   setTotalCoins: React.Dispatch<React.SetStateAction<number>>;
@@ -22,11 +23,11 @@ export const useTotalCoins = () => {
   return context;
 };
 
-export const TotalCoinsProvider: React.FC = ({ children }: any) => {
+export const TotalCoinsProvider = ({ children }: any) => {
   const supabase = createClient();
 
-  const [totalCoins, setTotalCoins] = useState<number>(0);
-  const [totalAmount, setTotalAmount] = useState<number>(0);
+  const [totalCoins, setTotalCoins] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
   const orderIds: string[] = JSON.parse(
     localStorage.getItem("orderIds") || "[]"
   );
