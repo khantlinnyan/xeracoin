@@ -1,4 +1,4 @@
-import ShareCoin from "./shareCoin";
+import ShareCoin from "./ShareCoin";
 
 const page = () => {
   return (
