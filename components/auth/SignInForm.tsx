@@ -33,10 +33,13 @@ export default function SignInForm() {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const result = await signInWithEmailAndPassword(data);
-    if (result) {
+    try {
+      const result = await signInWithEmailAndPassword(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
       toast.success("Sign in successful");
-      redirect("/");
+      // redirect("/");
     }
   }
 
