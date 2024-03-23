@@ -42,6 +42,7 @@ export default function RegisterForm() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const result = await signUpWithEmailAndPassword(data);
+
     const { error } = JSON.parse(result);
     if (result) {
       toast.success("Register successful");

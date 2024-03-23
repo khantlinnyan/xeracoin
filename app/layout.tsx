@@ -25,13 +25,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} bg-zinc-100 `}>
         <TotalCoinsProvider>
-          <CoinContextProvider>
-            <main>
-              <Toaster position="top-center" richColors />
-              {children}
-            </main>
-            <Nav />
-          </CoinContextProvider>
+          {/* <CoinContextProvider> */}
+          <main>
+            <Toaster position="top-center" richColors />
+            {children}
+          </main>
+          <Nav />
+          {/* </CoinContextProvider> */}
         </TotalCoinsProvider>
       </body>
     </html>

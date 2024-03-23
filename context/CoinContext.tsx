@@ -19,12 +19,13 @@ export const CoinContextProvider = ({
 }) => {
   const supabase = createClient();
   const { totalCoins, totalAmount } = useTotalCoins();
+  // const dataSession = supabase.auth.getSession();
 
   const fetchData = async () => {
     const dataSession = await supabase.auth.getSession();
     const user = await supabase.auth.getUser();
 
-    if (!dataSession) {
+    if (!dataSession.data.session) {
       return;
     } else {
       const { data, error } = await supabase.from("user").insert([
@@ -34,8 +35,10 @@ export const CoinContextProvider = ({
           email: user.data.user?.email,
         },
       ]);
-      if (typeof localStorage !== "undefined") {
-        localStorage.removeItem("orderIds");
+      if (data) {
+        if (typeof localStorage !== "undefined") {
+          localStorage.removeItem("orderIds");
+        }
       }
     }
   };
