@@ -27,15 +27,13 @@ export const CoinContextProvider = ({
     if (!dataSession) {
       return;
     } else {
-      const { error } = await supabase
-        .from("user")
-        .insert([
-          {
-            coins: totalCoins,
-            amount: totalAmount,
-            email: user.data.user?.email,
-          },
-        ]);
+      const { data, error } = await supabase.from("user").insert([
+        {
+          coins: totalCoins,
+          amount: totalAmount,
+          email: user.data.user?.email,
+        },
+      ]);
       if (typeof localStorage !== "undefined") {
         localStorage.removeItem("orderIds");
       }
