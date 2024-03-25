@@ -57,14 +57,14 @@ export default function ShareCoin() {
             .eq("email", data.email)
             .single();
           if (userUpdateCoin) {
-            const updateCoins: any = (userUpdateCoin.coins = +parseInt(
+            const updateCoins2: any = (userUpdateCoin.coins += parseInt(
               data.coin,
               10
             ));
-            const updateAmount = Math.floor(updateCoins / 1000);
+            const updateAmount2 = Math.floor(updateCoins / 1000);
             const { data: update, error }: any = await supabase
               .from("user")
-              .update({ coins: updateCoins, amount: updateAmount })
+              .update({ coins: updateCoins2, amount: updateAmount2 })
               .eq("email", data.email)
               .single();
             toast.success("Transfer coins success");
