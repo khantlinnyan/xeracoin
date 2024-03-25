@@ -45,7 +45,7 @@ export default function ShareCoin() {
       if (userData) {
         if (userData.coins > data.coin) {
           const updateCoins = userData.coins - parseInt(data.coin, 10);
-          const updateAmount = Math.floor(updateCoins / 1000);
+          const updateAmount = updateCoins * 1000;
           await supabase
             .from("user")
             .update({ coins: updateCoins, amount: updateAmount })
@@ -57,11 +57,9 @@ export default function ShareCoin() {
             .eq("email", data.email)
             .single();
           if (userUpdateCoin) {
-            const updateCoins2: any = (userUpdateCoin.coins += parseInt(
-              data.coin,
-              10
-            ));
-            const updateAmount2 = Math.floor(updateCoins / 1000);
+            const updateCoins2: any =
+              userUpdateCoin.coins + parseInt(data.coin, 10);
+            const updateAmount2 = updateCoins * 1000;
             const { data: update, error }: any = await supabase
               .from("user")
               .update({ coins: updateCoins2, amount: updateAmount2 })
