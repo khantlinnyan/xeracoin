@@ -59,7 +59,7 @@ export default function ShareCoin() {
           if (userUpdateCoin) {
             const updateCoins2: any =
               userUpdateCoin.coins + parseInt(data.coin, 10);
-            const updateAmount2 = updateCoins * 1000;
+            const updateAmount2 = updateCoins2 * 1000;
             const { data: update, error }: any = await supabase
               .from("user")
               .update({ coins: updateCoins2, amount: updateAmount2 })
