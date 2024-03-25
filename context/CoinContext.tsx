@@ -35,10 +35,8 @@ export const CoinContextProvider = ({
           email: user.data.user?.email,
         },
       ]);
-      if (data) {
-        if (typeof localStorage !== "undefined") {
-          localStorage.removeItem("orderIds");
-        }
+      if (typeof localStorage !== "undefined") {
+        localStorage.removeItem("orderIds");
       }
     }
   };

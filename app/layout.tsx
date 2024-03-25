@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/ui/navigation/Nav";
 import { TotalCoinsProvider } from "@/context/TotalCoinContext";
-import { CoinContextProvider } from "@/context/CoinContext";
 import { Toaster, toast } from "sonner";
 
 const poppins = Poppins({
@@ -25,13 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} bg-zinc-100 `}>
         <TotalCoinsProvider>
-          {/* <CoinContextProvider> */}
           <main>
             <Toaster position="top-center" richColors />
             {children}
           </main>
           <Nav />
-          {/* </CoinContextProvider> */}
         </TotalCoinsProvider>
       </body>
     </html>

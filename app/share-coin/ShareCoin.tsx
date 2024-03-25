@@ -41,6 +41,7 @@ export default function ShareCoin() {
         .select("*")
         .eq("userId", `${user.data.user?.id}`)
         .single();
+
       if (userData) {
         if (userData.coins > data.coin) {
           const updateCoins = userData.coins - parseInt(data.coin, 10);
